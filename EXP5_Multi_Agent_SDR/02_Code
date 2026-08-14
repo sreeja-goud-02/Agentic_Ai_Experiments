@@ -1,0 +1,115 @@
+import ollama
+
+print("=" * 60)
+print("MULTI-AGENT SDR SYSTEM")
+print("=" * 60)
+
+target = input("\nEnter your target customer requirement: ")
+
+# ---------------- LEAD GENERATION AGENT ----------------
+print("\nGenerating leads...\n")
+
+lead_response = ollama.chat(
+    model="llama3.2",
+    messages=[
+        {
+            "role": "user",
+            "content": f"""
+You are a Lead Generation Agent.
+
+Based on the following target customer requirement, generate 3
+potential example leads.
+
+Target requirement:
+{target}
+
+For each lead provide:
+- Company name
+- Industry
+- Potential requirement
+
+Keep the response concise.
+"""
+        }
+    ]
+)
+
+leads = lead_response["message"]["content"]
+
+print("=" * 60)
+print("LEAD GENERATION AGENT")
+print("=" * 60)
+print(leads)
+
+
+# ---------------- LEAD QUALIFICATION AGENT ----------------
+print("\nQualifying leads...\n")
+
+qualification_response = ollama.chat(
+    model="llama3.2",
+    messages=[
+        {
+            "role": "user",
+            "content": f"""
+You are a Lead Qualification Agent.
+
+Analyze the following leads and identify which leads are qualified.
+
+Leads:
+{leads}
+
+For each lead provide:
+- Qualification status
+- Reason
+
+Mark each lead as either Qualified or Not Qualified.
+"""
+        }
+    ]
+)
+
+qualified_leads = qualification_response["message"]["content"]
+
+print("=" * 60)
+print("LEAD QUALIFICATION AGENT")
+print("=" * 60)
+print(qualified_leads)
+
+
+# ---------------- EMAIL GENERATION AGENT ----------------
+print("\nGenerating personalized emails...\n")
+
+email_response = ollama.chat(
+    model="llama3.2",
+    messages=[
+        {
+            "role": "user",
+            "content": f"""
+You are an Email Generation Agent.
+
+Create a professional and personalized sales outreach email
+for the qualified leads below.
+
+Qualified leads:
+{qualified_leads}
+
+For each qualified lead provide:
+- Subject
+- Email body
+
+Do not invent personal contact information.
+"""
+        }
+    ]
+)
+
+emails = email_response["message"]["content"]
+
+print("=" * 60)
+print("EMAIL GENERATION AGENT")
+print("=" * 60)
+print(emails)
+
+print("\n" + "=" * 60)
+print("MULTI-AGENT SDR WORKFLOW COMPLETED")
+print("=" * 60)
