@@ -1,0 +1,129 @@
+import ollama
+
+MODEL = "llama3.2"
+
+print("=" * 70)
+print("REASONING MODEL BENCHMARKING")
+print("=" * 70)
+
+problem = input("\nEnter a reasoning problem: ")
+
+# ---------------------------------------------------------
+# STRATEGY 1: DIRECT PROMPT
+# ---------------------------------------------------------
+print("\n" + "=" * 70)
+print("STRATEGY 1: DIRECT PROMPT")
+print("=" * 70)
+
+direct_response = ollama.chat(
+    model=MODEL,
+    messages=[
+        {
+            "role": "user",
+            "content": f"""
+Solve the following problem and provide the answer.
+
+Problem:
+{problem}
+"""
+        }
+    ]
+)
+
+direct_output = direct_response["message"]["content"]
+
+print(direct_output)
+
+
+# ---------------------------------------------------------
+# STRATEGY 2: STEP-BY-STEP PROMPT
+# ---------------------------------------------------------
+print("\n" + "=" * 70)
+print("STRATEGY 2: STEP-BY-STEP PROMPT")
+print("=" * 70)
+
+step_response = ollama.chat(
+    model=MODEL,
+    messages=[
+        {
+            "role": "user",
+            "content": f"""
+Solve the following problem using a clear step-by-step approach.
+
+Problem:
+{problem}
+
+Explain the important reasoning steps and then provide the final answer.
+"""
+        }
+    ]
+)
+
+step_output = step_response["message"]["content"]
+
+print(step_output)
+
+
+# ---------------------------------------------------------
+# STRATEGY 3: STRUCTURED REASONING PROMPT
+# ---------------------------------------------------------
+print("\n" + "=" * 70)
+print("STRATEGY 3: STRUCTURED REASONING PROMPT")
+print("=" * 70)
+
+structured_response = ollama.chat(
+    model=MODEL,
+    messages=[
+        {
+            "role": "user",
+            "content": f"""
+Analyze and solve the following reasoning problem.
+
+Problem:
+{problem}
+
+Use this structure:
+
+1. Identify the given information.
+2. Identify what needs to be determined.
+3. Explain the approach.
+4. Perform the necessary reasoning.
+5. Give the final answer clearly.
+
+Keep the explanation concise and organized.
+"""
+        }
+    ]
+)
+
+structured_output = structured_response["message"]["content"]
+
+print(structured_output)
+
+
+# ---------------------------------------------------------
+# COMPARISON
+# ---------------------------------------------------------
+print("\n" + "=" * 70)
+print("BENCHMARK COMPARISON")
+print("=" * 70)
+
+print("""
+The three prompting strategies have been evaluated:
+
+1. Direct Prompt
+   - Simple instruction
+   - Minimal guidance
+
+2. Step-by-Step Prompt
+   - Encourages sequential reasoning
+   - Provides intermediate explanation
+
+3. Structured Reasoning Prompt
+   - Uses a predefined reasoning structure
+   - Organizes the solution into multiple stages
+""")
+
+print("=" * 70)
+print("REASONING MODEL BENCHMARKING COMPLETED")
+print("=" * 70)
