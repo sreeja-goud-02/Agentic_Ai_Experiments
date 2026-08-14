@@ -1,0 +1,30 @@
+Objective
+
+To design and implement an Agentic AI workflow in which multiple intelligent steps work together to understand a user request, perform the required task, and generate an appropriate response.
+
+Description
+
+This experiment demonstrates the basic working of an Agentic AI system using Python and an LLM. The system accepts a user query and processes it through a sequence of intelligent steps.
+
+The workflow allows the AI agent to analyze the user's request, determine the appropriate action, execute the required operation, and generate a final response. This demonstrates how AI agents can perform tasks autonomously rather than simply generating a direct response.
+
+Workflow
+
+User Query → Agent → Task Analysis → Action/Tool Execution → Result Processing → Final Response
+
+Technologies Used
+Python
+Large Language Model (LLM)
+Ollama
+Llama 3.2
+Prompt Engineering
+Example
+
+User Query:
+What are the benefits of Artificial Intelligence?
+
+Agent Analysis:
+The agent identifies that the user is requesting an explanation of the benefits of AI.
+
+Generated Response:
+Artificial Intelligence can automate repetitive tasks, improve decision-making, analyze large amounts of data, increase productivity, and support applications in areas such as healthcare, finance, education, and transportation.
