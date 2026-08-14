@@ -1,0 +1,22 @@
+# EXP 10 – Fine-Tuning for Domain Adaptation
+
+## Objective
+
+To demonstrate the process of domain adaptation by training a machine-learning model on domain-specific cybersecurity data and evaluating its performance on new cybersecurity-related queries.
+
+## Problem Statement
+
+A model trained on general-purpose data may not perform effectively when applied to a specialized domain. Domain adaptation helps improve the model's ability to understand and classify information related to a particular field.
+
+The objective of this experiment is to demonstrate domain adaptation by first training a base classification model and then adapting it using cybersecurity-specific training data.
+
+## Methodology
+
+The experiment consists of the following steps:
+
+1. Prepare general-purpose training data.
+2. Train a base classification model.
+3. Prepare cybersecurity-specific domain data.
+4. Adapt the model using domain-specific data.
+5. Test the adapted model with new cybersecurity queries.
+6. Observe the domain-specific predictions.
