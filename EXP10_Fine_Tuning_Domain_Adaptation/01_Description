@@ -1,0 +1,105 @@
+# EXP 10 – Fine-Tuning for Domain Adaptation
+
+## Objective
+
+To demonstrate the process of domain adaptation by training a machine-learning model on domain-specific cybersecurity data and evaluating its performance on new cybersecurity-related queries.
+
+## Problem Statement
+
+A model trained on general-purpose data may not perform effectively when applied to a specialized domain. Domain adaptation helps improve the model's ability to understand and classify information related to a particular field.
+
+The objective of this experiment is to demonstrate domain adaptation by first training a base classification model and then adapting it using cybersecurity-specific training data.
+
+## Methodology
+
+The experiment consists of the following steps:
+
+1. Prepare general-purpose training data.
+2. Train a base classification model.
+3. Prepare cybersecurity-specific domain data.
+4. Adapt the model using domain-specific data.
+5. Test the adapted model with new cybersecurity queries.
+6. Observe the domain-specific predictions.
+
+## Workflow
+
+General Training Data
+        ↓
+Data Vectorization
+        ↓
+Base Model Training
+        ↓
+Cybersecurity Domain Data
+        ↓
+Domain Adaptation
+        ↓
+Domain-Adapted Model
+        ↓
+Cybersecurity Test Queries
+        ↓
+Predictions
+
+## Dataset
+
+### General Domain Data
+
+The base model is trained using general-purpose examples such as:
+
+- The product is very useful.
+- The service is excellent.
+- The application is easy to use.
+- The product quality is poor.
+
+### Cybersecurity Domain Data
+
+The model is adapted using cybersecurity-specific examples such as:
+
+- The firewall successfully blocked the attack.
+- The security system detected malware.
+- The network has a serious vulnerability.
+- The server was affected by a phishing attack.
+
+## Model Used
+
+The experiment uses:
+
+- TF-IDF Vectorization for converting text into numerical features.
+- Logistic Regression for text classification.
+- Synthetic cybersecurity data for domain adaptation.
+
+## Example
+
+Input:
+
+The server contains a security vulnerability
+
+Output:
+
+Prediction: threat
+
+Another example:
+
+Input:
+
+The system uses multi-factor authentication
+
+Output:
+
+Prediction: secure
+
+## Technologies Used
+
+- Python
+- Scikit-learn
+- TF-IDF Vectorizer
+- Logistic Regression
+- Synthetic Data
+- Cybersecurity Domain Dataset
+
+## Result
+
+The domain adaptation workflow was successfully implemented. A base text classification model was trained and subsequently adapted using cybersecurity-specific data.
+
+The adapted model successfully classified new cybersecurity-related queries into categories such as `secure` and `threat`.
+
+This experiment demonstrates how adapting a model with domain-specific data can make it suitable for specialized applications such as cybersecurity text classification.
