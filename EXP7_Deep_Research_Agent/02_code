@@ -1,0 +1,121 @@
+import ollama
+
+print("=" * 60)
+print("DEEP RESEARCH AGENT WORKFLOW")
+print("=" * 60)
+
+topic = input("\nEnter a research topic: ")
+
+# ---------------- PLANNING AGENT ----------------
+print("\nGenerating research plan...\n")
+
+planning_response = ollama.chat(
+    model="llama3.2",
+    messages=[
+        {
+            "role": "user",
+            "content": f"""
+You are a Research Planning Agent.
+
+Create a structured research plan for the following topic:
+
+Topic:
+{topic}
+
+Include:
+1. Introduction
+2. Key concepts
+3. Important points
+4. Applications
+5. Advantages and challenges
+6. Conclusion
+
+Keep the plan concise.
+"""
+        }
+    ]
+)
+
+plan = planning_response["message"]["content"]
+
+print("=" * 60)
+print("RESEARCH PLAN")
+print("=" * 60)
+print(plan)
+
+
+# ---------------- CONTENT GENERATION AGENT ----------------
+print("\nGenerating research content...\n")
+
+research_response = ollama.chat(
+    model="llama3.2",
+    messages=[
+        {
+            "role": "user",
+            "content": f"""
+You are a Research Content Generation Agent.
+
+Generate clear and structured content about the following topic.
+
+Topic:
+{topic}
+
+Research Plan:
+{plan}
+
+Follow the research plan and generate informative content.
+"""
+        }
+    ]
+)
+
+content = research_response["message"]["content"]
+
+print("=" * 60)
+print("GENERATED CONTENT")
+print("=" * 60)
+print(content)
+
+
+# ---------------- REFLECTION AGENT ----------------
+print("\nReflecting and improving the content...\n")
+
+reflection_response = ollama.chat(
+    model="llama3.2",
+    messages=[
+        {
+            "role": "user",
+            "content": f"""
+You are a Reflection Agent.
+
+Review the following research content.
+
+Topic:
+{topic}
+
+Content:
+{content}
+
+Check for:
+- Missing important points
+- Unclear explanations
+- Repetition
+- Poor organization
+- Incorrect or unsupported claims
+
+Then provide an improved and well-organized final version.
+"""
+        }
+    ]
+)
+
+final_content = reflection_response["message"]["content"]
+
+print("=" * 60)
+print("FINAL IMPROVED CONTENT")
+print("=" * 60)
+print(final_content)
+
+print("\n" + "=" * 60)
+print("DEEP RESEARCH WORKFLOW COMPLETED")
+print("=" * 60)
