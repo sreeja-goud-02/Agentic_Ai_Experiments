@@ -1,0 +1,109 @@
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+
+print("=" * 60)
+print("FINE-TUNING FOR DOMAIN ADAPTATION")
+print("=" * 60)
+
+# ---------------------------------------------------------
+# GENERAL / BASE DATA
+# ---------------------------------------------------------
+
+base_texts = [
+    "The product is very useful",
+    "The service is excellent",
+    "The application is easy to use",
+    "The product quality is poor",
+    "The service is slow",
+    "The application has many problems"
+]
+
+base_labels = [
+    "positive",
+    "positive",
+    "positive",
+    "negative",
+    "negative",
+    "negative"
+]
+
+# ---------------------------------------------------------
+# DOMAIN-SPECIFIC DATA
+# Cybersecurity domain
+# ---------------------------------------------------------
+
+domain_texts = [
+    "The firewall successfully blocked the attack",
+    "The security system detected malware",
+    "The network has a serious vulnerability",
+    "The server was affected by a phishing attack",
+    "The intrusion detection system generated an alert",
+    "The system is protected by multi-factor authentication"
+]
+
+domain_labels = [
+    "secure",
+    "secure",
+    "threat",
+    "threat",
+    "threat",
+    "secure"
+]
+
+# ---------------------------------------------------------
+# DATA VECTORIZATION
+# ---------------------------------------------------------
+
+vectorizer = TfidfVectorizer()
+
+base_vectors = vectorizer.fit_transform(base_texts)
+
+# ---------------------------------------------------------
+# BASE MODEL
+# ---------------------------------------------------------
+
+model = LogisticRegression(max_iter=1000)
+
+model.fit(base_vectors, base_labels)
+
+print("\nBase model trained successfully.")
+
+# ---------------------------------------------------------
+# DOMAIN ADAPTATION / FINE-TUNING
+# ---------------------------------------------------------
+
+domain_vectors = vectorizer.transform(domain_texts)
+
+model.fit(domain_vectors, domain_labels)
+
+print("Domain adaptation completed successfully.")
+
+# ---------------------------------------------------------
+# TEST DOMAIN-SPECIFIC QUERIES
+# ---------------------------------------------------------
+
+test_queries = [
+    "The firewall blocked a malicious attack",
+    "The server contains a security vulnerability",
+    "The system uses multi-factor authentication"
+]
+
+test_vectors = vectorizer.transform(test_queries)
+
+predictions = model.predict(test_vectors)
+
+# ---------------------------------------------------------
+# RESULTS
+# ---------------------------------------------------------
+
+print("\n" + "=" * 60)
+print("DOMAIN-SPECIFIC PREDICTIONS")
+print("=" * 60)
+
+for query, prediction in zip(test_queries, predictions):
+    print("\nQuery:", query)
+    print("Prediction:", prediction)
+
+print("\n" + "=" * 60)
+print("FINE-TUNING WORKFLOW COMPLETED")
+print("=" * 60)
