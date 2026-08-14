@@ -1,0 +1,77 @@
+import ollama
+
+print("=" * 60)
+print("AGENTIC AI WORKFLOW")
+print("=" * 60)
+
+# Get task from user
+task = input("\nEnter your task: ")
+
+print("\nAgent is analyzing the task...\n")
+
+# Step 1: Planning
+planning_response = ollama.chat(
+    model="llama3.2",
+    messages=[
+        {
+            "role": "user",
+            "content": f"""
+You are an AI planning agent.
+
+Analyze the following task and create a simple step-by-step plan
+to complete it.
+
+Task:
+{task}
+
+Give only the plan.
+"""
+        }
+    ]
+)
+
+plan = planning_response["message"]["content"]
+
+print("PLAN:")
+print("-" * 60)
+print(plan)
+
+# Step 2: Execution
+print("\n" + "=" * 60)
+print("EXECUTING PLAN")
+print("=" * 60)
+
+execution_response = ollama.chat(
+    model="llama3.2",
+    messages=[
+        {
+            "role": "user",
+            "content": f"""
+You are an AI execution agent.
+
+Complete the user's task using the plan provided below.
+
+Task:
+{task}
+
+Plan:
+{plan}
+
+Provide a clear and useful final result.
+"""
+        }
+    ]
+)
+
+result = execution_response["message"]["content"]
+
+# Step 3: Final Result
+print("\n" + "=" * 60)
+print("FINAL RESULT")
+print("=" * 60)
+
+print(result)
+
+print("\n" + "=" * 60)
+print("Agentic AI workflow completed successfully!")
+print("=" * 60)
