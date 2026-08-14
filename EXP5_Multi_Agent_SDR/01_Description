@@ -1,0 +1,52 @@
+# EXP 5 – Multi-Agent SDR System
+
+## Aim
+
+To design a multi-agent Sales Development Representative (SDR) system that automates lead generation, lead qualification, and personalized email generation.
+
+## Objective
+
+To develop an Agentic AI workflow in which multiple specialized agents collaborate to identify potential leads, evaluate their suitability, and generate personalized outreach emails.
+
+## Problem Statement
+
+Traditional sales development requires manually searching for potential customers, evaluating leads, and preparing personalized emails. This process can be time-consuming and repetitive.
+
+The objective of this experiment is to create a multi-agent SDR system where different AI agents perform specific tasks such as lead generation, lead qualification, and email generation.
+
+## Agents Used
+
+### 1. Lead Generation Agent
+
+Identifies and generates potential leads based on the given requirements.
+
+### 2. Lead Qualification Agent
+
+Analyzes the generated leads and determines whether they are suitable prospects based on predefined criteria.
+
+### 3. Email Generation Agent
+
+Creates a personalized sales outreach email for qualified leads.
+
+## Workflow
+
+User Requirements  
+↓  
+Lead Generation Agent  
+↓  
+Lead Qualification Agent  
+↓  
+Email Generation Agent  
+↓  
+Personalized Outreach Email
+
+## Expected Result
+
+The system should generate potential leads, qualify the leads according to predefined criteria, and produce a personalized email for suitable prospects.
+
+## Technologies Used
+
+- Python
+- Agentic AI
+- Large Language Model (LLM)
+- Multi-Agent Workflow
