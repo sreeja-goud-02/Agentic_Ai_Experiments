@@ -1,0 +1,66 @@
+print("=" * 60)
+print("POLICY COMPLIANCE AGENT")
+print("=" * 60)
+
+# Synthetic employee data
+employees = [
+    {
+        "name": "Alice",
+        "department": "Finance",
+        "password_length": 12,
+        "mfa_enabled": True,
+        "access_level": "Employee"
+    },
+    {
+        "name": "Bob",
+        "department": "IT",
+        "password_length": 7,
+        "mfa_enabled": True,
+        "access_level": "Admin"
+    },
+    {
+        "name": "Charlie",
+        "department": "HR",
+        "password_length": 10,
+        "mfa_enabled": False,
+        "access_level": "Employee"
+    }
+]
+
+# Policy rules
+MIN_PASSWORD_LENGTH = 8
+MFA_REQUIRED = True
+
+print("\nEvaluating policy compliance...\n")
+
+for employee in employees:
+
+    violations = []
+
+    # Rule 1: Password length
+    if employee["password_length"] < MIN_PASSWORD_LENGTH:
+        violations.append("Password length is less than 8 characters")
+
+    # Rule 2: MFA
+    if employee["mfa_enabled"] != MFA_REQUIRED:
+        violations.append("Multi-factor authentication is not enabled")
+
+    # Rule 3: Admin access
+    if employee["access_level"] == "Admin" and employee["department"] != "IT":
+        violations.append("Admin access is not allowed for this department")
+
+    print("-" * 60)
+    print("Employee:", employee["name"])
+
+    if len(violations) == 0:
+        print("Status: COMPLIANT")
+        print("Reason: All policy rules are satisfied.")
+    else:
+        print("Status: NON-COMPLIANT")
+        print("Violations:")
+        for violation in violations:
+            print("-", violation)
+
+print("\n" + "=" * 60)
+print("POLICY COMPLIANCE EVALUATION COMPLETED")
+print("=" * 60)
