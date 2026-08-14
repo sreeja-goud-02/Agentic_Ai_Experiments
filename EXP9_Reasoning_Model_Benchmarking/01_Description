@@ -1,0 +1,41 @@
+## Objective
+
+To benchmark the performance of a reasoning model by comparing its outputs when the same problem is provided using different prompting strategies.
+
+##Prompting Strategies
+1. Direct Prompt
+
+The model is simply asked to solve the given problem without providing any specific reasoning structure.
+
+Solve the following problem and provide the answer.
+2. Step-by-Step Prompt
+
+The model is instructed to solve the problem using a clear step-by-step approach.
+
+Solve the following problem using a clear step-by-step approach.
+Explain the important reasoning steps and then provide the final answer.
+3. Structured Reasoning Prompt
+
+The model is given a predefined structure for solving the problem.
+
+1. Identify the given information.
+2. Identify what needs to be determined.
+3. Explain the approach.
+4. Perform the necessary reasoning.
+5. Give the final answer clearly.
+Example
+Problem
+A train travels 120 km in 2 hours. What is its average speed?
+Direct Prompt Output
+Average speed = 60 km/h.
+Step-by-Step Prompt Output
+Distance = 120 km
+Time = 2 hours
+
+
+Average Speed = Distance / Time
+              = 120 / 2
+              = 60 km/h
+
+
+Therefore, the average speed is 60 km/h.
