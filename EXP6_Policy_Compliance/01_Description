@@ -1,0 +1,9 @@
+## Exp:6. Policy Compliance Agent
+Build an agent with rule-based evaluation and synthetic data
+## Objective
+To build a Policy Compliance Agent that evaluates synthetic employee data against predefined policy rules and determines whether each employee is COMPLIANT or NON-COMPLIANT.
+## Policy Rules
+The system evaluates employees using the following rules:
+•	Password Length :The password must contain at least 8 characters. 
+•	Multi-Factor: Multi-factor authentication (MFA) must be enabled. 
+•	Admin :Admin access is allowed only for employees belonging to the IT department.
